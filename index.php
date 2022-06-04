@@ -1,5 +1,5 @@
 <?php
-include "backend/koneksi.php";
+include "php/koneksi.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +39,6 @@ include "backend/koneksi.php";
 </head>
 
 <body id="home">
-  <!-- nav -->
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
       <a class="navbar-brand">GungNanda</a>
@@ -88,7 +87,7 @@ include "backend/koneksi.php";
           <br />
           <br />
           <br />
-          <a class="tombol btn btn-secondary" href="https://gungnanda.com/portfolio/">formal</a> | | <a class="tombol btn btn-secondary" href="https://gungnanda.com/portofolio/">casual</a>
+          <a class="tombol btn btn-secondary" href="portfolio/formal/">formal</a> | | <a class="tombol btn btn-secondary" href="portfolio/casual/">casual</a>
         </div>
       </div>
     </div>
@@ -109,7 +108,7 @@ include "backend/koneksi.php";
           <br />
           <br />
           <br />
-          <a class="tombol btn btn-game btn-secondary" href="https://gungnanda.com/game/whackamole">Whack a mole</a>| |<a class="tombol btn btn-game btn-secondary" href="https://gungnanda.com/game/SnakeGame">SnakeGame</a>
+          <a class="tombol btn btn-game btn-secondary" href="https://gungnanda.com/game/whackamole">Whack a mole</a>
         </div>
       </div>
     </div>
