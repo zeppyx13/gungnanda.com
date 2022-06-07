@@ -68,7 +68,7 @@ include "php/koneksi.php";
   </nav>
   <div class="jumbotron jumbotron-fluid">
     <div class="container" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="100" data-aos-offset="0" data-aos-duration="700">
-      <h1 class="display-4"><strong>WELCOME TO</strong> <br />MY WEBSITE<br /><a class="tombol btn-about btn btn-outline-primary" href="https://gungnanda.com/portfolio/">about me</a></h1>
+      <h1 class="display-4"><strong>WELCOME TO</strong> <br />MY WEBSITE<br /><a class="tombol btn-about btn btn-outline-primary" href="portfolio/formal/">about me</a></h1>
     </div>
   </div>
   <section id="portfolio">
