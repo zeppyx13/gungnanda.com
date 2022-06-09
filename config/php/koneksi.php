@@ -1,5 +1,5 @@
 <?php
-$koneksi = mysqli_connect('localhost', 'root', '', 'gungnanda.com');
+include "backend/config/php/koneksi.php";
 if (isset($_POST['tombol'])) {
     $Nama = $_POST['Nama'];
     $Email = $_POST['Email'];

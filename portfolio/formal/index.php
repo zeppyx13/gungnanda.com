@@ -1,5 +1,5 @@
 <?php
-include '../../php/koneksi.php';
+include '../../backend/config/php/koneksi.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

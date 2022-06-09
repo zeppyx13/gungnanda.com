@@ -30,7 +30,7 @@ if (isset($_POST["login"])) {
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <!-- <script src="config/js/verify.js"></script> -->
+    <script src="config/js/verify.js"></script>
 </head>
 
 <body>
@@ -76,9 +76,9 @@ if (isset($_POST["login"])) {
         </div>
     </section>
 
-    <script src="config/js/jquery.min.js"></script>
-    <script src="config/js/popper.js"></script>
-    <script src="config/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
     <script src="config/js/main.js"></script>
 </body>
 

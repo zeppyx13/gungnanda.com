@@ -1,5 +1,5 @@
 <?php
-include "php/koneksi.php";
+include "config/php/koneksi.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,29 +8,8 @@ include "php/koneksi.php";
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- css -->
-  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="ico/apple-touch-icon-57x57.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114x114.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72x72.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144x144.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="ico/apple-touch-icon-60x60.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="ico/apple-touch-icon-120x120.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="ico/apple-touch-icon-76x76.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="ico/apple-touch-icon-152x152.png" />
-  <link rel="icon" type="image/png" href="ico/favicon-196x196.png" sizes="196x196" />
-  <link rel="icon" type="image/png" href="ico/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/png" href="ico/favicon-32x32.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="ico/favicon-16x16.png" sizes="16x16" />
-  <link rel="icon" type="image/png" href="ico/favicon-128.png" sizes="128x128" />
-  <meta name="application-name" content="&nbsp;" />
-  <meta name="msapplication-TileColor" content="#FFFFFF" />
-  <meta name="msapplication-TileImage" content="mstile-144x144.png" />
-  <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
-  <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
-  <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
-  <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet" />
@@ -80,7 +59,7 @@ include "php/koneksi.php";
       </div>
       <div class="row" style="margin-top: 50px">
         <div class="col-md-5" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="100" data-aos-offset="0" data-aos-duration="1000">
-          <img src="img/portfolio.png" style="max-width: 300px; max-height: 300px" alt="" />
+          <img src="assets/img/portfolio.png" style="max-width: 300px; max-height: 300px" alt="" />
         </div>
         <div class="col-md-7 isi" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-delay="100" data-aos-offset="0" data-aos-duration="1000">
           portfolio, which contains skills, experience, and all about me, this portfolio has 2, one is casual and one is formal. Where the formal portfolio contains things that are more formal and more professional, and the casual one contains things that are more relaxed.
@@ -101,7 +80,7 @@ include "php/koneksi.php";
       </div>
       <div class="row" style="margin-top: 50px">
         <div class="col-md-5" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="100" data-aos-offset="0" data-aos-duration="1000">
-          <img src="img/18961875.jpg" style="max-width: 300px; max-height: 300px" alt="game" class="gambargame" />
+          <img src="assets/img/18961875.jpg" style="max-width: 300px; max-height: 300px" alt="game" class="gambargame" />
         </div>
         <div class="col-md-7 isi" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-delay="100" data-aos-offset="0" data-aos-duration="1000">
           a game that I made from a website or application-based
@@ -122,13 +101,13 @@ include "php/koneksi.php";
       </div>
       <div class="row" style="margin-top: 50px">
         <div class="col-md-5" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="100" data-aos-offset="0" data-aos-duration="1000">
-          <img src="img/Blogging.png" style="max-width: 300px; max-height: 300px" alt="game" class="gambargame" />
+          <img src="assets/img/Blogging.png" style="max-width: 300px; max-height: 300px" alt="game" class="gambargame" />
         </div>
         <div class="col-md-7 isi" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-delay="100" data-aos-offset="0" data-aos-duration="1000">
           personal blog, personal writings and opinions that contain information and tips that I write on the blog
           <br />
           <br />
-          <a class="tombol btn btn-game btn-secondary disabled" href="https://gungnanda.com/game/whackamole">My Blog</a>
+          <a id="glog" class="tombol btn btn-game btn-secondary" href="">My Blog</a>
         </div>
       </div>
     </div>
@@ -182,6 +161,7 @@ include "php/koneksi.php";
   <script>
     AOS.init();
   </script>
+  <script src="config/js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 
