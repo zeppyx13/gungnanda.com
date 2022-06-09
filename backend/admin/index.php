@@ -26,7 +26,7 @@ $data = mysqli_query($konek, "SELECT * FROM  tanggapan LIMIT $awaldata,$datahala
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
-    <link href="style.css" rel="stylesheet" />
+    <link href="assets/css/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -61,6 +61,8 @@ $data = mysqli_query($konek, "SELECT * FROM  tanggapan LIMIT $awaldata,$datahala
     <title>Dashboard</title>
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="config/js/jquery-3.6.0.min.js"></script>
+    <script src="config/js/searchpg1.js"></script>
 </head>
 
 <body id="body-pd">
@@ -69,12 +71,9 @@ $data = mysqli_query($konek, "SELECT * FROM  tanggapan LIMIT $awaldata,$datahala
             <i class='bx bx-menu' id="header-toggle"></i>
         </div>
         <form class="d-flex" action="" method="post">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword" autocomplete="off">
-            <button class="btn btn-outline-success" type="submit" name="cari">Search</button>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword" autocomplete="off" id="keyword">
+            <button class=" btn btn-outline-success" type="submit" name="cari">Search</button>
         </form>
-        <div class="header__img">
-            <img src="assets/img/finalsimbol.png" alt="">
-        </div>
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
@@ -109,61 +108,63 @@ $data = mysqli_query($konek, "SELECT * FROM  tanggapan LIMIT $awaldata,$datahala
             </a>
         </nav>
     </div>
-    <div class="data-tables datatable-dark">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col pesan">
-                    <div class="row">
-                        <div class="col-md-10">
-                            <table border="1" class="table table-striped table-hover">
-                                <tr>
-                                    <td>No</td>
-                                    <td>Nama</td>
-                                    <td>Email</td>
-                                    <td>Pesan</td>
-                                </tr>
-                                <?php
-                                while ($hasil = mysqli_fetch_array($data))
-                                    echo "
+    <div id="container">
+        <div class="data-tables datatable-dark">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col pesan">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <table border="1" class="table table-striped table-hover">
+                                    <tr>
+                                        <td>No</td>
+                                        <td>Nama</td>
+                                        <td>Email</td>
+                                        <td>Pesan</td>
+                                    </tr>
+                                    <?php
+                                    while ($hasil = mysqli_fetch_array($data))
+                                        echo "
                                     <tr>
                                     <td>$hasil[0]</td>
                                     <td>$hasil[1]</td>
                                     <td>$hasil[2]</td>
                                     <td>$hasil[3]</td>
                                     </tr>";
-                                ?>
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
+                                    ?>
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination">
 
-                                        <?php if ($aktif > 1) : ?>
-                                            <li class="page-item"><a class="page-link" href="?halaman=<?= $aktif - 1; ?>">Previous</a></li>
-                                        <?php else : ?>
-                                            <li class="page-item disabled"><a class="page-link" href="?halaman=<?= $aktif - 1; ?>">Previous</a></li>
-                                        <?php endif; ?>
-
-                                        <?php for ($i = 1; $i <= $jumlahhalaman; $i++) : ?>
-                                            <?php if ($i == $aktif) : ?>
-                                                <li class="page-item active"><a class="page-link" href="?halaman=<?= $i; ?>"><?= $i; ?></a></li>
+                                            <?php if ($aktif > 1) : ?>
+                                                <li class="page-item"><a class="page-link" href="?halaman=<?= $aktif - 1; ?>">Previous</a></li>
                                             <?php else : ?>
-                                                <li class="page-item"><a class="page-link" href="?halaman=<?= $i; ?>"><?= $i; ?></a></li>
+                                                <li class="page-item disabled"><a class="page-link" href="?halaman=<?= $aktif - 1; ?>">Previous</a></li>
                                             <?php endif; ?>
-                                        <?php endfor; ?>
 
-                                        <?php if ($aktif >= 0) : ?>
-                                            <li class="page-item "><a class="page-link" href="?halaman=<?= $aktif + 1; ?>">Next</a></li>
-                                        <?php else : ?>
-                                            <li class="page-item disabled"><a class="page-link" href="?halaman=<?= $aktif + 1; ?>">Next</a></li>
-                                        <?php endif; ?>
+                                            <?php for ($i = 1; $i <= $jumlahhalaman; $i++) : ?>
+                                                <?php if ($i == $aktif) : ?>
+                                                    <li class="page-item active"><a class="page-link" href="?halaman=<?= $i; ?>"><?= $i; ?></a></li>
+                                                <?php else : ?>
+                                                    <li class="page-item"><a class="page-link" href="?halaman=<?= $i; ?>"><?= $i; ?></a></li>
+                                                <?php endif; ?>
+                                            <?php endfor; ?>
 
-                                    </ul>
-                                </nav>
-                            </table>
+                                            <?php if ($aktif >= 0) : ?>
+                                                <li class="page-item "><a class="page-link" href="?halaman=<?= $aktif + 1; ?>">Next</a></li>
+                                            <?php else : ?>
+                                                <li class="page-item disabled"><a class="page-link" href="?halaman=<?= $aktif + 1; ?>">Next</a></li>
+                                            <?php endif; ?>
+
+                                        </ul>
+                                    </nav>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <hr size="5">
+                <a target="_blank" href="export_data.php"><button type="button" class="btn btn-primary"><i class="bi bi-file-earmark-spreadsheet"></i> Export</button></a>
             </div>
-            <hr size="5">
-            <a target="_blank" href="export_data.php"><button type="button" class="btn btn-primary"><i class="bi bi-file-earmark-spreadsheet"></i> Export</button></a>
         </div>
     </div>
     <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
