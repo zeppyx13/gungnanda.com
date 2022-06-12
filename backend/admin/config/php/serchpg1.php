@@ -4,7 +4,6 @@ require '../../../config/php/koneksi.php';
 $keyword = $_GET['keyword'];
 $query = "SELECT * FROM tanggapan WHERE Nama LIKE '%$keyword%' OR Email LIKE '%$keyword%' OR Pesan LIKE '%$keyword%' OR id LIKE '%$keyword%'";
 $cari = query($query);
-// 
 $datahalaman = 10;
 $jumlahdata = mysqli_query($konek, "SELECT * FROM tanggapan");
 $jumlahdata = count(query("SELECT * FROM tanggapan"));

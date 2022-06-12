@@ -6,14 +6,8 @@ if (!isset($_SESSION["login"])) {
 }
 require '../config/php/backend.php';
 include "../config/php/koneksi.php";
-$datahalaman = 10;
-$jumlahdata = mysqli_query($konek, "SELECT * FROM tanggapan");
-$jumlahdata = count(query("SELECT * FROM tanggapan"));
-$jumlahhalaman = ceil($jumlahdata / $datahalaman);
-$aktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
-$awaldata = ($datahalaman * $aktif) - $datahalaman;
-$data = mysqli_query($konek, "SELECT * FROM  tanggapan LIMIT $awaldata,$datahalaman  ");
 
+$work = query("SELECT * FROM portfolio")
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,11 +74,11 @@ $data = mysqli_query($konek, "SELECT * FROM  tanggapan LIMIT $awaldata,$datahala
                     <span class="nav__logo-name">Home</span>
                 </a>
                 <div class="nav__list">
-                    <a href="" class="nav__link">
+                    <a href="./" class="nav__link">
                         <i class='bx bx-message-square-detail nav__icon'></i>
                         <span class="nav__name">Messages</span>
                     </a>
-                    <a href="portfolio.php" class="nav__link">
+                    <a href="" class="nav__link">
                         <i class='bx bx-briefcase-alt-2'></i>
                         <span class="nav__name">Recent work</span>
                     </a>
@@ -106,61 +100,37 @@ $data = mysqli_query($konek, "SELECT * FROM  tanggapan LIMIT $awaldata,$datahala
         </nav>
     </div>
     <div id="container">
-        <div class="data-tables datatable-dark">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col pesan">
-                        <div class="row">
-                            <div class="col-md-10">
-                                <table border="1" class="table table-striped table-hover">
-                                    <tr>
-                                        <td>No</td>
-                                        <td>Nama</td>
-                                        <td>Email</td>
-                                        <td>Pesan</td>
-                                    </tr>
-                                    <?php
-                                    while ($hasil = mysqli_fetch_array($data))
-                                        echo "
-                                    <tr>
-                                    <td>$hasil[0]</td>
-                                    <td>$hasil[1]</td>
-                                    <td>$hasil[2]</td>
-                                    <td>$hasil[3]</td>
-                                    </tr>";
-                                    ?>
-                                    <nav aria-label="Page navigation example">
-                                        <ul class="pagination">
-
-                                            <?php if ($aktif > 1) : ?>
-                                                <li class="page-item"><a class="page-link" href="?halaman=<?= $aktif - 1; ?>">Previous</a></li>
-                                            <?php else : ?>
-                                                <li class="page-item disabled"><a class="page-link" href="?halaman=<?= $aktif - 1; ?>">Previous</a></li>
-                                            <?php endif; ?>
-
-                                            <?php for ($i = 1; $i <= $jumlahhalaman; $i++) : ?>
-                                                <?php if ($i == $aktif) : ?>
-                                                    <li class="page-item active"><a class="page-link" href="?halaman=<?= $i; ?>"><?= $i; ?></a></li>
-                                                <?php else : ?>
-                                                    <li class="page-item"><a class="page-link" href="?halaman=<?= $i; ?>"><?= $i; ?></a></li>
-                                                <?php endif; ?>
-                                            <?php endfor; ?>
-
-                                            <?php if ($aktif >= 0) : ?>
-                                                <li class="page-item "><a class="page-link" href="?halaman=<?= $aktif + 1; ?>">Next</a></li>
-                                            <?php else : ?>
-                                                <li class="page-item disabled"><a class="page-link" href="?halaman=<?= $aktif + 1; ?>">Next</a></li>
-                                            <?php endif; ?>
-
-                                        </ul>
-                                    </nav>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div style="margin-top: 50px;" class="col-md-12">
+                    <a href=""><button style="text-align:right; border-radius:10px;" type="button" class="btn btn-secondary"><i class='bx bx-plus'></i> add</button></a>
+                    <hr>
                 </div>
-                <hr size="5">
-                <a target="_blank" href="export_data.php"><button type="button" class="btn btn-primary"><i class="bi bi-file-earmark-spreadsheet"></i> Export</button></a>
+                <div class="col-xl-12">
+                    <table style="margin-top: 10px;" class="table">
+                        <thead class="table-dark">
+                            <tr>
+                                <td>id</td>
+                                <td>description</td>
+                                <td>image</td>
+                                <td>link</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1; ?>
+                            <?php foreach ($work as $data) : ?>
+                                <tr>
+
+                                    <td><?= $data["id"]; ?></td>
+                                    <td><?= $data["des"]; ?></td>
+                                    <td><?= $data["gambar"]; ?></td>
+                                    <td><?= $data["link"]; ?></td>
+                                </tr>
+                                <?php $i++; ?>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
