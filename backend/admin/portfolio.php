@@ -103,7 +103,7 @@ $work = query("SELECT * FROM portfolio")
         <div class="container">
             <div class="row justify-content-center">
                 <div style="margin-top: 50px;" class="col-md-12">
-                    <a href=""><button style="text-align:right; border-radius:10px;" type="button" class="btn btn-secondary"><i class='bx bx-plus'></i> add</button></a>
+                    <a href="php/input.php"> <button style="text-align:right; border-radius:10px;" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class='bx bx-plus'></i> add</button></a>
                     <hr>
                 </div>
                 <div class="col-xl-12">
@@ -114,6 +114,7 @@ $work = query("SELECT * FROM portfolio")
                                 <td>description</td>
                                 <td>image</td>
                                 <td>link</td>
+                                <td>Action</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -125,12 +126,14 @@ $work = query("SELECT * FROM portfolio")
                                     <td><?= $data["des"]; ?></td>
                                     <td><?= $data["gambar"]; ?></td>
                                     <td><?= $data["link"]; ?></td>
+                                    <td><button class="btn btn-danger">Delete</button> <button class="btn btn-warning">Update</button></td>
                                 </tr>
                                 <?php $i++; ?>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
+
             </div>
         </div>
     </div>

@@ -15,29 +15,62 @@
         <div class="row warpper">
             <div class="col-md-12 head">
                 <header>
-                    <p class="text"> UPDATE PROJECT </p>
+                    <p class="text"> INPUT PROJECT </p>
                 </header>
             </div>
             <hr class="hr1">
             <div class="col-md-12 isi">
-                <div class="input-group mb-3">
-                    <input id="img" required autocomplete="off" type="file" class="form-control" placeholder="Server" aria-label="Server">
-                </div>
-                <label for="des">Project Name :</label>
-                <div id="des" class="input-group">
-                    <input class="form-control" required autocomplete="off" placeholder="Name" aria-label="Name"></input>
-                </div>
-                <label for="basic-url" class="form-label">Your vanity URL :</label>
-                <div class="input-group mb-3">
-                    <input placeholder="URL website" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-                </div>
-                <hr class="hr2">
-                <button type="submit" class="btn submit btn-secondary btn-lg">UPDATE</button>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <label for="des">Project Name :</label>
+                    <div id="des" class="input-group">
+                        <input class="form-control" required autocomplete="off" placeholder="Name" aria-label="Name"></input>
+                    </div>
+                    <div class="url">
+                        <label for="basic-url" class="form-label">Your Website URL :</label>
+                        <div class="input-group mb-3">
+                            <input required autocomplete="off" placeholder="URL website" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                        </div>
+                    </div>
+                    <label for="img" class="form-label">New Image :</label>
+                    <div class="gmbr input-group mb-3">
+                        <input id="img" required autocomplete="off" type="file" class="form-control" placeholder="Server" aria-label="Server">
+                    </div>
+                    <div class="form-check">
+                        <input checked onclick="showlink()" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Website
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input onclick="hidelink()" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Hardware
+                        </label>
+                    </div>
+                    <hr class="hr2">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="submit" class="btn submit btn-secondary btn-lg">ADD</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <script>
+            const link = document.querySelector('.url');
+            const input = document.querySelector('#basic-url');
 
+            function hidelink() {
+                link.classList.add('d-none');
+                input.removeAttribute('required');
+            }
+
+            function showlink() {
+                link.classList.remove('d-none');
+                input.setAttribute('required', '');
+            }
+        </script>
 </body>
 
 </html>
