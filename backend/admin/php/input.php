@@ -1,3 +1,17 @@
+<?php
+require '../../config/php/backend.php';
+if (isset($_POST['submit'])) {
+    if (add($_POST) > 0) {
+        echo "<script>
+    alert('insert success');
+    document.location.href='../portfolio.php';
+    </script>
+    ";
+    } else {
+        echo mysqli_error($konek);
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,34 +37,34 @@
                 <form action="" method="post" enctype="multipart/form-data">
                     <label for="des">Project Name :</label>
                     <div id="des" class="input-group">
-                        <input class="form-control" required autocomplete="off" placeholder="Name" aria-label="Name"></input>
+                        <input name="nama" class="form-control" required autocomplete="off" placeholder="Name" aria-label="Name"></input>
                     </div>
                     <div class="url">
                         <label for="basic-url" class="form-label">Your Website URL :</label>
                         <div class="input-group mb-3">
-                            <input required autocomplete="off" placeholder="URL website" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            <input name="url" required autocomplete="off" placeholder="URL website" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
                         </div>
                     </div>
                     <label for="img" class="form-label">New Image :</label>
                     <div class="gmbr input-group mb-3">
-                        <input id="img" required autocomplete="off" type="file" class="form-control" placeholder="Server" aria-label="Server">
+                        <input id="img" name="img" required autocomplete="off" type="file" class="form-control" placeholder="Server" aria-label="Server">
                     </div>
                     <div class="form-check">
-                        <input checked onclick="showlink()" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input checked onclick="showlink()" class="form-check-input" type="radio" name="type" id="flexRadioDefault1" value="Website">
                         <label class="form-check-label" for="flexRadioDefault1">
                             Website
                         </label>
                     </div>
                     <div class="form-check">
-                        <input onclick="hidelink()" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <input onclick="hidelink()" class="form-check-input" type="radio" name="type" id="flexRadioDefault2" value="non-website">
                         <label class="form-check-label" for="flexRadioDefault2">
-                            Hardware
+                            non-website
                         </label>
                     </div>
                     <hr class="hr2">
                     <div class="row">
                         <div class="col-md-6">
-                            <button type="submit" class="btn submit btn-secondary btn-lg">ADD</button>
+                            <button type="submit" name="submit" class="btn submit btn-secondary btn-lg">ADD</button>
                         </div>
                     </div>
                 </form>

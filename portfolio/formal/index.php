@@ -1,11 +1,13 @@
 <?php
 include "../../backend/config/php/koneksi.php";
+require '../../backend/config/php/backend.php';
 if (isset($_POST['tombol'])) {
   $Nama = $_POST['Nama'];
   $Email = $_POST['Email'];
   $Pesan = $_POST['Pesan'];
   $query = mysqli_query($koneksi, "INSERT INTO tanggapan(Nama,Email,Pesan) Values('$Nama','$Email','$Pesan')");
 }
+$work = query("SELECT * FROM portfolio");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +26,7 @@ if (isset($_POST['tombol'])) {
 
 <body>
   <header>
-    <a href="https://gungnanda.com/" class="logo">Portfolio</a>
+    <a href="../../" class="logo">PORTFOLIO</a>
     <div class="bx bx-menu" id="menu-icon"></div>
     <ul class="navbar">
       <li><a href="#home">Home</a></li>
@@ -53,7 +55,7 @@ if (isset($_POST['tombol'])) {
         </ul>
       </div>
       <p>welcome to my portfolio website,enjoy.<br>
-        download my <a href="#" download="">CV</a>
+        download my <strong><a style="color:grey;" href="#" download="">CV</a></strong>
       </p>
     </div>
   </section>
@@ -118,34 +120,46 @@ if (isset($_POST['tombol'])) {
       <div class="skill">
         <i class="bx bxl-css3"></i>
         <h2>CSS3</h2>
-        <p>although this is not a programming language, but this is an important skill for programmers to have.</p>
+        <p>I use CSS to style my website. I'm not very proficient in this language because I'm not good at designing a website</p>
       </div>
       <div class="skill">
         <i class="bx bxl-javascript"></i>
         <h2>JavaScript</h2>
-        <p>javascript programming language. I'm new to this language and not very proficient in using the syntax to the fullest.</p>
+        <p>javascript programming language. I use languages to develop a website, one of which is for the Document Object Model (DOM) and make a website using React JS</p>
       </div>
       <div class="skill">
-        <i class="bx bx-code-alt"></i>
+        <i class='bx bx-code-alt'></i>
+        <h2>C</h2>
+        <p>
+          C language, I use this language for the purposes of my electronics projects such as Arduino and IOT
+        </p>
+      </div>
+      <div class="skill">
+        <i class='bx bxl-c-plus-plus'></i>
         <h2>C++</h2>
         <p>
-          language C + +. This language is a language, my basic as a programmer, this language I use most often and I understand the most from other programming languages. I use it to create Arduino projects and make calculations system.
+          C++ language. I use this language to create simple desktop Applications, such as complex calculation applications and games.
         </p>
       </div>
       <div class="skill">
         <i class="bx bx-coffee"></i>
         <h2>Java</h2>
-        <p>Java language, I use it as a medium for learning from school and I'm new here. I also use this language as the language I use to continue learning the programming language from C++</p>
+        <p>Java language, I use it as a medium for learning from school and I'm new here. I also use this language as the language I use to continue learning the new programming language</p>
       </div>
       <div class="skill">
         <i class="bx bxl-php"></i>
         <h2>PHP</h2>
-        <p>PHP language, I use this language as a web developing language. I usually use this language as logic on a website</p>
+        <p>PHP language, I use this language as the development language of most of my websites, usually use this language as logic on my website. Apart from that, I use this language for frame work such as Laravel and Codeigniter.</p>
+      </div>
+      <div class="skill">
+        <i class='bx bxs-data'></i>
+        <h2>SQL</h2>
+        <p> Structured Query Language<br> or SQL, as a website developer I use SQL as a database. In this case the DBMS that I often use is MYSQL</p>
       </div>
       <div class="skill">
         <i class='bx bxl-python'></i>
         <h2>Python</h2>
-        <p>Pythone, I use this language as for a backend system for application</p>
+        <p>Python, I use this language as a backend system for the applications I make, besides that I use python for data processing purposes.</p>
       </div>
     </div>
   </section>
@@ -155,79 +169,25 @@ if (isset($_POST['tombol'])) {
       <span>Recent Work</span>
     </div>
     <div class="portfolio-container">
-      <div class="box">
-        <div class="box-img">
-          <img src="./img/finalsimbol.png" alt="padangsambian" />
+      <?php $i = 1; ?>
+      <?php foreach ($work as $row) : ?>
+        <div class="box">
+          <div class="box-img">
+            <img src="../../backend/admin/assets/img/<?= $row["ganbar"] ?>" alt="padangsambian" />
+          </div>
+          <div class="content">
+            <a class="link" href="https://<?= $row["link"] ?>">
+              <?php
+              if ($row["type"] == "Website") {
+                echo "<i class='bi bi-link-45deg'></i>";
+              }
+              ?>
+            </a>
+            <h3><?= $row["des"] ?></h3>
+          </div>
         </div>
-        <div class="content">
-          <a href="https://gungnanda.com/padangsambian"><i class="bi bi-link-45deg"></i></a>
-          <h3>Web desa padangsambian</h3>
-        </div>
-      </div>
-      <div class="box">
-        <div class="box-img">
-          <img src="./img/penyiram tanaman otomatis.png" alt="penyiram tanaman" />
-        </div>
-        <div class="content">
-          <h3>automatic plant sprinkler</h3>
-        </div>
-      </div>
-      <div class="box">
-        <div class="box-img">
-          <img src="./img/tongsampah.png" alt="tongsampah" />
-        </div>
-        <div class="content">
-          <h3>automatic trashbin</h3>
-        </div>
-      </div>
-      <div class="box">
-        <div class="box-img">
-          <img src="./img/rfid dor.png" alt="portfolio1" />
-        </div>
-        <div class="content">
-          <h3>Doorlock RFID</h3>
-        </div>
-      </div>
-      <div class="box">
-        <div class="box-img">
-          <img src="./img/mobil.png" alt="mobil" />
-        </div>
-        <div class="content">
-          <h3>ultrasonic car</h3>
-        </div>
-      </div>
-      <div class="box">
-        <div class="box-img">
-          <img src="./img/powersupplay1.png" alt="portfolio2" />
-        </div>
-        <div class="content">
-          <h3>powersuply 1</h3>
-        </div>
-      </div>
-      <div class="box">
-        <div class="box-img">
-          <img src="./img/powersupplay2.png" alt="Suhu & Jemuran otomatis" />
-        </div>
-        <div class="content">
-          <h3>powersuply 2</h3>
-        </div>
-      </div>
-      <div class="box">
-        <div class="box-img">
-          <img src="./img/powersupplay3.png" alt="RFID" />
-        </div>
-        <div class="content">
-          <h3>powersuply 3</h3>
-        </div>
-      </div>
-      <div class="box">
-        <div class="box-img">
-          <img src="./img/web2.png" alt="Robot Bluetooth" />
-        </div>
-        <div class="content">
-          <h3>Portofolio</h3>
-        </div>
-      </div>
+        <?php $i++; ?>
+      <?php endforeach; ?>
     </div>
   </section>
   <section class="contact" id="contact">

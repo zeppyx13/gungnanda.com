@@ -121,12 +121,11 @@ $work = query("SELECT * FROM portfolio")
                             <?php $i = 1; ?>
                             <?php foreach ($work as $data) : ?>
                                 <tr>
-
                                     <td><?= $data["id"]; ?></td>
                                     <td><?= $data["des"]; ?></td>
-                                    <td><?= $data["gambar"]; ?></td>
+                                    <td><img src="assets/img/<?= $data["ganbar"]; ?>" style="max-width: 150px; max-height: 150px;"></td>
                                     <td><?= $data["link"]; ?></td>
-                                    <td><button class="btn btn-danger">Delete</button> <button class="btn btn-warning">Update</button></td>
+                                    <td><a href="php/delete.php?id=<?= $data["id"]; ?>"><button class="btn btn-danger">Delete</button></a> <button class="btn btn-warning">Update</button></td>
                                 </tr>
                                 <?php $i++; ?>
                             <?php endforeach; ?>
