@@ -1,11 +1,8 @@
 <?php
 include "../../backend/config/php/koneksi.php";
-if (isset($_POST['tombol'])) {
-  $Nama = $_POST['Nama'];
-  $Email = $_POST['Email'];
-  $Pesan = $_POST['Pesan'];
-  $query = mysqli_query($koneksi, "INSERT INTO tanggapan(Nama,Email,Pesan) Values('$Nama','$Email','$Pesan')");
-}
+require '../../backend/config/php/backend.php';
+
+$data = query("SELECT * FROM portfolio");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +15,7 @@ if (isset($_POST['tombol'])) {
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <title>nanda portofolio</title>
+  <title>portofolio</title>
 </head>
 
 <body id="home">
@@ -41,9 +38,6 @@ if (isset($_POST['tombol'])) {
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#soscialmedia">soscial media</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">contact</a>
           </li>
         </ul>
       </div>
@@ -70,18 +64,18 @@ if (isset($_POST['tombol'])) {
       <div class="row justify-content-center fs-5 text-center">
         <div class="col-9" data-aos="fade-up" data-aos-offset="240" data-aos-duration="1500">
           <p>
-            saya gung nanda,lahir 13-11-2004 di denpasar.saya adalah pelajar yang suka tentang teknologi dan game.saya sekarang kelas 11 SMK dan sekolah di SMK TI BALI GLOBAL,dan lulusan dari SMP Negri 2 Denpasar.saya pelajar yang biasa-biasa saja.
+            saya gung nanda,saya adalah pelajar yang suka tentang teknologi dan elektronika.saya sekarang kelas 12 SMK dan sekolah di SMK TI BALI GLOBAL,dan lulusan dari SMP Negri 2 Denpasar.saya pelajar yang biasa-biasa saja.
           </p>
           <br>
           <p>
-            selain pelajar saya juga seorang programer dan seseorang yang menggabut dan gatau mau ngapa ngapain,bahasa program yang saya kuasai c++,php,java,python, dan javascript.dan bahasa yang lain saya sedang proses belajar.
+            selain pelajar saya juga seorang programer dan web developer,bahasa program yang saya kuasai c++,php,java,python,C, dan javascript.dan bahasa yang lain saya sedang proses belajar.
           </p>
         </div>
         <br>
-        <h4 data-aos="fade-up" data-aos-duration="1500" style="text-align:center; margin-bottom: 1cm;">Gaya Kerja<h4>
+        <h4 data-aos="fade-up" data-aos-duration="1500" style="text-align:center; margin-bottom: 1cm;  margin-top: 1cm;">Gaya Kerja<h4>
             <div class="progress">
-              <div class="progress-bar progress-bar-striped progress-bar-animated" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1500" role="progressbar" style="width: 60%" aria-valuenow="15" aria-valuemin="80" aria-valuemax="100">INDIVIDUAL</div>
-              <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="400" role="progressbar" style="width: 40%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">KLOMPOK</div>
+              <div class="progress-bar" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1500" role="progressbar" style="width: 60%" aria-valuenow="15" aria-valuemin="80" aria-valuemax="100">INDIVIDUAL</div>
+              <div class="progress-bar bg-success" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="400" role="progressbar" style="width: 40%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">KLOMPOK</div>
             </div>
       </div>
     </div>
@@ -94,28 +88,40 @@ if (isset($_POST['tombol'])) {
     <sectio id="project">
       <div class="container">
         <div class="row">
-          <div class="col mb-3 pt-3 mt-5">
-            <h2 style="text-align:center; margin-bottom: 1cm;">Project</h2>
+          <div class="col-md-12">
+            <h2 style="text-align:center ;">PROJECT</h2>
           </div>
-        </div>
-        <div class="row justify-content-evenly mb-9">
-          <div class="col-md-4 mb-3" data-aos="flip-right" data-aos-delay="300" data-aos-duration="1500">
-            <div class="card">
-              <img src="img/test.jpeg" class="card-img-top" alt="project 1">
-              <div class="card-body">
-                <p class="card-text">tong sampah otomatis.menggunakan sensor ultrasonic dan arduino uno,project ini adalah project pertama yang saya buat.seperti arduino umum nya bahasa yang digunakan untuk meperogram arduino adalah c++ </p>
+          <div class="row justify-content-center">
+            <?php $i = 1; ?>
+            <?php foreach ($data as $row) : ?>
+              <div class="col-md-4 mb-3 mt-4" data-aos="fade-down" data-aos-delay="300" data-aos-duration="1500">
+                <div class="card" style="width: 18rem;">
+                  <img style="margin: auto; max-width:200px ; max-width:200px ;" src="../../backend/admin/assets/img/<?= $row["gambar"] ?>" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title"><?= $row["nama"] ?></h5>
+                    <p class="card-text"><?= $row["deskripsi"] ?></p>
+                    <?php
+                    if ($row["type"] == "Website") {
+                      $l = $row["link"];
+                      $class = "btn btn-outline-secondary";
+                      $a = "<a href='https://$l' class='$class'>check </a>";
+                      echo $a;
+                    }
+                    ?>
+                  </div>
+                </div>
               </div>
-            </div>
+              <?php $i++; ?>
+            <?php endforeach; ?>
           </div>
         </div>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#e2edff" fill-opacity="1" d="M0,96L40,85.3C80,75,160,53,240,80C320,107,400,181,480,192C560,203,640,149,720,117.3C800,85,880,75,960,106.7C1040,139,1120,213,1200,218.7C1280,224,1360,160,1400,128L1440,96L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z" style="--darkreader-inline-fill:#d2cfcb;" data-darkreader-inline-fill=""></path>
-      </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#e2edff" fill-opacity="1" d="M0,224L40,213.3C80,203,160,181,240,181.3C320,181,400,203,480,197.3C560,192,640,160,720,144C800,128,880,128,960,112C1040,96,1120,64,1200,96C1280,128,1360,224,1400,272L1440,320L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z" data-darkreader-inline-fill="" style="--darkreader-inline-fill:#d2cfcb;"></path>
-      </svg>
   </section>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#e2edff" fill-opacity="1" d="M0,96L40,85.3C80,75,160,53,240,80C320,107,400,181,480,192C560,203,640,149,720,117.3C800,85,880,75,960,106.7C1040,139,1120,213,1200,218.7C1280,224,1360,160,1400,128L1440,96L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z" style="--darkreader-inline-fill:#d2cfcb;" data-darkreader-inline-fill=""></path>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#e2edff" fill-opacity="1" d="M0,224L40,213.3C80,203,160,181,240,181.3C320,181,400,203,480,197.3C560,192,640,160,720,144C800,128,880,128,960,112C1040,96,1120,64,1200,96C1280,128,1360,224,1400,272L1440,320L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z" data-darkreader-inline-fill="" style="--darkreader-inline-fill:#d2cfcb;"></path>
+  </svg>
   <section id="soscialmedia">
     <div class="container">
       <div class="row">
@@ -130,7 +136,7 @@ if (isset($_POST['tombol'])) {
             <div class="card-body">
               <h5 class="card-title">INSTAGRAM</h5>
               <p class="card-text">boleh di follow</p>
-              <a href="https://www.instagram.com/gn.nanda/" class="btn btn-primary">Check here</a>
+              <a href="https://www.instagram.com/gn.nanda/" class="btn btn-primary">Follow</a>
             </div>
           </div>
         </div>
@@ -140,17 +146,17 @@ if (isset($_POST['tombol'])) {
             <div class="card-body">
               <h5 class="card-title">DISCORD</h5>
               <p class="card-text">join server discord saya di bawah</p>
-              <a href="https://discord.io/sansroom" class="btn btn-primary">Server</a>
+              <a href="https://discord.io/sansroom" class="btn btn-primary">Join</a>
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-3" data-aos="fade-down" data-aos-delay="500">>
+        <div class="col-md-4 mb-3" data-aos="fade-down" data-aos-delay="500">
           <div class="card">
             <img src="img/github.jpeg" class="card-img-top" alt="project 1">
             <div class="card-body">
               <h5 class="card-title">Git Hub</h5>
               <p class="card-text">belum isi apa follow aja dulu </p>
-              <a href="https://github.com/zeppyx13" class="btn btn-primary">GitHub</a>
+              <a href="https://github.com/zeppyx13" class="btn btn-primary">Follow</a>
             </div>
           </div>
         </div>
@@ -160,7 +166,7 @@ if (isset($_POST['tombol'])) {
             <div class="card-body">
               <h5 class="card-title">Spotify</h5>
               <p class="card-text">bisa di cek spotify di bawah siapa tau ada playlist cocok </p>
-              <a href="https://open.spotify.com/user/3142s7ffzvd4k4q3auyf4ld5vsku?si=bz6egiT-TbaltYQqmYVISg&utm_source=copy-link&dl_branch=1" class="btn btn-primary">listen here</a>
+              <a href="https://open.spotify.com/user/3142s7ffzvd4k4q3auyf4ld5vsku?si=bz6egiT-TbaltYQqmYVISg&utm_source=copy-link&dl_branch=1" class="btn btn-primary">Listen</a>
             </div>
           </div>
         </div>
@@ -170,7 +176,7 @@ if (isset($_POST['tombol'])) {
             <div class="card-body">
               <h5 class="card-title">Steam</h5>
               <p class="card-text">Boleh di add</p>
-              <a href="https://steamcommunity.com/id/zphyrus/" class="btn btn-primary">Mabar</a>
+              <a href="https://steamcommunity.com/id/zphyrus/" class="btn btn-primary">Add</a>
             </div>
           </div>
         </div>
@@ -189,42 +195,6 @@ if (isset($_POST['tombol'])) {
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
     <path fill="#e2edff" fill-opacity="1" d="M0,32L30,80C60,128,120,224,180,250.7C240,277,300,235,360,224C420,213,480,235,540,213.3C600,192,660,128,720,122.7C780,117,840,171,900,202.7C960,235,1020,245,1080,218.7C1140,192,1200,128,1260,101.3C1320,75,1380,85,1410,90.7L1440,96L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z" style="--darkreader-inline-fill:#d2cfcb;" data-darkreader-inline-fill=""></path>
   </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-    <path fill="#e2edff" fill-opacity="1" d="M0,320L34.3,304C68.6,288,137,256,206,240C274.3,224,343,224,411,197.3C480,171,549,117,617,122.7C685.7,128,754,192,823,192C891.4,192,960,128,1029,112C1097.1,96,1166,128,1234,170.7C1302.9,213,1371,267,1406,293.3L1440,320L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z" style="--darkreader-inline-fill:#d2cfcb;" data-darkreader-inline-fill=""></path>
-  </svg>
-  <section id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <h2 style="text-align: center; margin-bottom: 1cm;">Contact Me</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-5">
-          <div class="alert alert-success alert-dismissible fade show d-none" role="alert">
-            BERHASIL!</strong> pesan anda berhasil terkirim
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-          <form method="POST">
-            <div class="mb-3">
-              <label for="name" class="form-label">Nama :</label>
-              <input type="text" class="form-control" id="name" aria-describedby="name" name="Nama">
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email:</label>
-              <input type="email" class="form-control" id="Email" aria-describedby="email" name="Email">
-            </div>
-            <div class="mb-3">
-              <label for="pesan" class="form-label">Pesan</label>
-              <textarea class="form-control" id="pesan" rows="3" name="Pesan"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary" name="tombol">kirim</button>
-          </form>
-        </div>
-      </div>
-    </div>
-    </div>
-  </section>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
   <script src="asset/js/bootstrap.min.js"></script>
   <script src="asset/js/bootstrap.bundle.min.js"></script>

@@ -107,13 +107,14 @@ $work = query("SELECT * FROM portfolio")
                     <hr>
                 </div>
                 <div class="col-xl-12">
-                    <table style="margin-top: 10px;" class="table">
+                    <table style="margin-top: 10px; margin-bottom:50px;" class="table">
                         <thead class="table-dark">
                             <tr>
-                                <td>id</td>
-                                <td>description</td>
-                                <td>image</td>
-                                <td>link</td>
+                                <td>Id</td>
+                                <td>Nama</td>
+                                <td>Image</td>
+                                <td>Description</td>
+                                <td>Link</td>
                                 <td>Action</td>
                             </tr>
                         </thead>
@@ -122,10 +123,11 @@ $work = query("SELECT * FROM portfolio")
                             <?php foreach ($work as $data) : ?>
                                 <tr>
                                     <td><?= $data["id"]; ?></td>
-                                    <td><?= $data["des"]; ?></td>
-                                    <td><img src="assets/img/<?= $data["ganbar"]; ?>" style="max-width: 150px; max-height: 150px;"></td>
+                                    <td><?= $data["nama"]; ?></td>
+                                    <td><img src="assets/img/<?= $data["gambar"]; ?>" style="max-width: 150px; max-height: 150px;"></td>
+                                    <td><?= $data["deskripsi"]; ?></td>
                                     <td><?= $data["link"]; ?></td>
-                                    <td><a href="php/delete.php?id=<?= $data["id"]; ?>"><button class="btn btn-danger">Delete</button></a> <button class="btn btn-warning">Update</button></td>
+                                    <td><a href="php/delete.php?id=<?= $data["id"]; ?>" onclick="return confirm('Confirm to Delete?');"><button class="btn btn-danger">Delete</button></a> <a href="php/update.php?id=<?= $data["id"]; ?>"><button class="btn btn-warning">Update</button></a></td>
                                 </tr>
                                 <?php $i++; ?>
                             <?php endforeach; ?>

@@ -55,7 +55,7 @@ $work = query("SELECT * FROM portfolio");
         </ul>
       </div>
       <p>welcome to my portfolio website,enjoy.<br>
-        download my <strong><a style="color:grey;" href="#" download="">CV</a></strong>
+        download my <strong><a style="color:grey;" href="" download="pdf/cv v1.pdf">CV Here</a></strong>
       </p>
     </div>
   </section>
@@ -173,7 +173,7 @@ $work = query("SELECT * FROM portfolio");
       <?php foreach ($work as $row) : ?>
         <div class="box">
           <div class="box-img">
-            <img src="../../backend/admin/assets/img/<?= $row["ganbar"] ?>" alt="padangsambian" />
+            <img src="../../backend/admin/assets/img/<?= $row["gambar"] ?>" alt="gmbr" />
           </div>
           <div class="content">
             <a class="link" href="https://<?= $row["link"] ?>">
@@ -183,7 +183,7 @@ $work = query("SELECT * FROM portfolio");
               }
               ?>
             </a>
-            <h3><?= $row["des"] ?></h3>
+            <h3><?= $row["nama"] ?></h3>
           </div>
         </div>
         <?php $i++; ?>

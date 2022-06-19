@@ -10,6 +10,12 @@ body {
   background-position: center;
   background-position-y: 1mm;
 }
+.nav-link {
+  margin-left: 10px;
+  text-align: center;
+  font-size: larger;
+  font-weight: bold;
+}
 #about {
   background-image: url(img/bg2.jpeg);
   background-repeat: repeat-x;

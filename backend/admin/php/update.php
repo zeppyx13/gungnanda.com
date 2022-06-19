@@ -1,9 +1,11 @@
 <?php
 require '../../config/php/backend.php';
+$id = $_GET['id'];
+$dta = query("SELECT * FROM portfolio WHERE id = '$id'")[0];
 if (isset($_POST['submit'])) {
-    if (add($_POST) > 0) {
+    if (update($_POST) > 0) {
         echo "<script>
-    alert('insert success');
+    alert('update success');
     document.location.href='../portfolio.php';
     </script>
     ";
@@ -35,23 +37,25 @@ if (isset($_POST['submit'])) {
             <hr class="hr1">
             <div class="col-md-12 isi">
                 <form action="" method="post" enctype="multipart/form-data">
+                    <input class=" d-none" value="<?= $dta['id'] ?>" name="id" type="text">
+                    <input type="hidden" name="gambarlama" value="<?= $dta["gambar"]; ?>">
                     <label for="des">Project Name :</label>
                     <div id="des" class="input-group">
-                        <input name="nama" class="form-control" required autocomplete="off" placeholder="Name" aria-label="Name"></input>
+                        <input value="<?= $dta['nama'] ?>" name="nama" class="form-control" required autocomplete="off" placeholder="Name" aria-label="Name"></input>
                     </div>
                     <label for="nama">Project Description :</label>
                     <div id="nama" class="input-group">
-                        <input name="des" class="form-control" required autocomplete="off" placeholder="Description" aria-label="Name"></input>
+                        <input name="des" value="<?= $dta['deskripsi'] ?>" class=" form-control" required autocomplete="off" placeholder="Description" aria-label="Name"></input>
                     </div>
                     <div class="url">
                         <label for="basic-url" class="form-label">Your Website URL :</label>
                         <div class="input-group mb-3">
-                            <input name="url" required autocomplete="off" placeholder="Https://" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            <input name="url" value="<?= $dta['link'] ?>" required autocomplete=" off" placeholder="Https://" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
                         </div>
                     </div>
                     <label for="img" class="form-label">New Image :</label>
                     <div class="gmbr input-group mb-3">
-                        <input id="img" name="img" required autocomplete="off" type="file" class="form-control" placeholder="Server" aria-label="Server">
+                        <input id="img" name="gambar" autocomplete="off" type="file" class="form-control" placeholder="Server" aria-label="Server">
                     </div>
                     <div class="form-check">
                         <input checked onclick="showlink()" class="form-check-input" type="radio" name="type" id="flexRadioDefault1" value="Website">
@@ -68,7 +72,7 @@ if (isset($_POST['submit'])) {
                     <hr class="hr2">
                     <div class="row">
                         <div class="col-md-6">
-                            <button type="submit" name="submit" class="btn submit btn-secondary btn-lg">ADD</button>
+                            <button type="submit" name="submit" class="btn submit btn-secondary btn-lg">Update</button>
                         </div>
                     </div>
                 </form>
