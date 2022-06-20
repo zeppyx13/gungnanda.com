@@ -1,5 +1,5 @@
 <?php
-$konek = mysqli_connect('localhost', 'root', '', 'gungnanda.com');
+$konek = mysqli_connect('localhost', 'u1109052_admin', 'xTz8pX6Tiw5GEaY', 'u1109052_gungnanda.com');
 
 function query($query)
 {
