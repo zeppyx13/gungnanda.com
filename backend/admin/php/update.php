@@ -1,5 +1,10 @@
 <?php
 require '../../config/php/backend.php';
+session_start();
+if (!isset($_SESSION["ladmin"])) {
+    header("Location: ../../");
+    exit;
+}
 $id = $_GET['id'];
 $dta = query("SELECT * FROM portfolio WHERE id = '$id'")[0];
 if (isset($_POST['submit'])) {

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION["login"])) {
+if (!isset($_SESSION["admin"])) {
     header("Location: ../");
     exit;
 }
@@ -87,14 +87,6 @@ $data = mysqli_query($konek, "SELECT * FROM  tanggapan LIMIT $awaldata,$datahala
                     <a href="portfolio.php" class="nav__link">
                         <i class='bx bx-briefcase-alt-2'></i>
                         <span class="nav__name">Recent work</span>
-                    </a>
-                    <a href="galeri.php" class="nav__link">
-                        <i class="bi bi-images"></i>
-                        <span class="nav_name">Galery</span>
-                    </a>
-                    <a href="video.php" class="nav__link">
-                        <box-icon name='videos' type='solid' color='#ffffff'></box-icon>
-                        <span class="nav_name">video</span>
                     </a>
                 </div>
             </div>

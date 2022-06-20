@@ -1,7 +1,7 @@
 <?php
 session_start();
 require 'config/php/backend.php';
-if (isset($_SESSION["login"])) {
+if (isset($_SESSION["admin"])) {
     header("Location:admin/");
     exit;
 }
@@ -13,7 +13,7 @@ if (isset($_POST["login"])) {
     if (mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_assoc($result);
         if ($pw == $row["password"]) {
-            $_SESSION["login"] = true;
+            $_SESSION["admin"] = true;
             header("Location:admin/");
             exit;
         }

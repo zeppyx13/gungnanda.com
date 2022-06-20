@@ -34,7 +34,7 @@ function munculkanTikus() {
   }, wRandom);
 }
 
-function mulai() {
+function play() {
   selesai = false;
   skor = 0;
   papanSkor.textContent = 0;
@@ -43,14 +43,12 @@ function mulai() {
     selesai = true;
   }, 20000);
 }
+
 function pukul() {
   skor++;
   this.parentNode.classList.remove("muncul");
-  pop.play();
   papanSkor.textContent = skor;
 }
-
 tikus.forEach((t) => {
   t.addEventListener("click", pukul);
 });
-return skor;

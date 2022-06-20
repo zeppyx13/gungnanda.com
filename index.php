@@ -93,7 +93,7 @@ if (isset($_POST['tombol'])) {
           <br />
           <br />
           <br />
-          <a class="tombol btn btn-game btn-secondary" href="game/whackamole/">Whack a mole</a> || <a class="tombol btn btn-game btn-secondary" href="game/SnakeGame/">Snake Game</a>
+          <a class="tombol btn btn-game btn-secondary" href="game/whackamole/">Whack a mole</a> | | <a class="tombol btn btn-game btn-secondary" href="game/SnakeGame/">Snake Game</a>
         </div>
       </div>
     </div>

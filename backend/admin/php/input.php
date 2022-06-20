@@ -1,5 +1,10 @@
 <?php
 require '../../config/php/backend.php';
+session_start();
+if (!isset($_SESSION["ladmin"])) {
+    header("Location: ../../");
+    exit;
+}
 if (isset($_POST['submit'])) {
     if (add($_POST) > 0) {
         echo "<script>
