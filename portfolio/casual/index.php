@@ -160,7 +160,7 @@ $data = query("SELECT * FROM portfolio");
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-3" data-aos="fade-down" data-aos-delay="300">>
+        <div class="col-md-4 mb-3" data-aos="fade-down" data-aos-delay="300">
           <div class="card">
             <img src="img/spotify.jpeg" class="card-img-top" alt="project 1">
             <div class="card-body">
@@ -170,7 +170,7 @@ $data = query("SELECT * FROM portfolio");
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-3" data-aos="fade-down" data-aos-delay="400">>
+        <div class="col-md-4 mb-3" data-aos="fade-down" data-aos-delay="400">
           <div class="card">
             <img src="img/steam.jpeg" class="card-img-top" alt="gambar 5">
             <div class="card-body">
