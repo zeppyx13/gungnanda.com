@@ -55,7 +55,7 @@ $work = query("SELECT * FROM portfolio");
         </ul>
       </div>
       <p>welcome to my portfolio website,enjoy.<br>
-        download my <strong><a style="color:grey;" href="pdf/cv v1.pdf" download="pdf/cv v1.pdf">CV Here</a></strong>
+        download my <strong><a style="color:grey;" href="pdf/cv.pdf" download="pdf/cv.pdf">CV Here</a></strong>
       </p>
     </div>
   </section>
