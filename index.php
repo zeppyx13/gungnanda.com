@@ -14,6 +14,15 @@ if (isset($_POST['tombol'])) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="official gung nanda website">
+  <meta name="keywords" content="Gung Nanda personal website">
+  <meta name="keywords" content="Portfolio Gung Nanda">
+  <meta name="keywords" content="Gung Nanda blog">
+  <meta name="keywords" content="Gung Nanda online profile">
+  <meta name="keywords" content="Gung Nanda website">
+  <meta name="keywords" content="gung nanda">
+  <meta name="keywords" content="gung nanda portofolio">
+  <meta http-equiv="X-UA-Compatible" content="IE=7">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />

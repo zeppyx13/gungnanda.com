@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/u1109052/public_html/
+    - export DEPLOYPATH=/home/u1608685/repositories/gungnanda.com
     - /bin/cp index.php $DEPLOYPATH
     - /bin/cp credits.html $DEPLOYPATH
     - /bin/cp -R assets $DEPLOYPATH
